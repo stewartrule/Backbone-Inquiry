@@ -358,10 +358,13 @@
         difficulty: 'noob'
       },
       lt: {
-        highscore: 500
+        highscore: 600
       }
+    }, {
+      orderBy: 'name',
+      order: 'desc'
     });
-    addTable(noobish, "users.query { eq: { difficulty: 'noob' }, lt: { highscore: 500 } }");
+    addTable(noobish, "users.query { eq: { difficulty: 'noob' }, lt: { highscore: 600 } }, { orderBy: 'name', order: 'desc' }");
     mixed = users.query({
       gte: {
         highscore: 150

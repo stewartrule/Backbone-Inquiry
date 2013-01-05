@@ -3,7 +3,7 @@
 A simple api to query your Backbone Collections. Also available as underscore/lodash mixins.
 
 
-### Basic api
+### Api
 
 * eq()
 * gt()
@@ -49,4 +49,18 @@ nameAlike = users.match name: /in/g
 ### byLength
 ```coffeescript
 byLength = users.byLength name: 5
+```
+
+
+### query
+```coffeescript
+noobish = users.query {
+    eq:
+        difficulty: 'noob'
+    lt:
+        highscore: 500
+}, {
+    orderBy: 'name'
+    order: 'desc'
+}
 ```

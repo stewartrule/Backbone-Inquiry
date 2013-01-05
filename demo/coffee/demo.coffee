@@ -68,8 +68,8 @@ $ ->
 
 
     # Query with multiple comparisons
-    noobish = users.query { eq: { difficulty: 'noob' }, lt: { highscore: 500 } }
-    addTable noobish, "users.query { eq: { difficulty: 'noob' }, lt: { highscore: 500 } }"
+    noobish = users.query { eq: { difficulty: 'noob' }, lt: { highscore: 600 } }, { orderBy: 'name', order: 'desc' }
+    addTable noobish, "users.query { eq: { difficulty: 'noob' }, lt: { highscore: 600 } }, { orderBy: 'name', order: 'desc' }"
 
 
     # And another one with multiple comparisons

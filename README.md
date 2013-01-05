@@ -5,6 +5,9 @@ A simple api to query your Backbone Collections. Also available as underscore/lo
 
 ### Api
 
+All methods accept 2 parameters. The first parameter contains a hash for comparison. The second (optional) parameter contains options for sorting.
+
+
 * eq()
 * gt()
 * gte()
@@ -17,7 +20,6 @@ A simple api to query your Backbone Collections. Also available as underscore/lo
 * between()
 * query()
 
-All methods accept 2 parameters. The first parameter contains a hash for comparison. The second (optional) parameter contains options for sorting.
 
 ## Examples
 

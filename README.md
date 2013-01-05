@@ -3,7 +3,7 @@
 A simple api to query your Backbone Collections. Also available as underscore/lodash mixins.
 
 
-## Api
+### Basic api
 
 * eq()
 * gt()
@@ -17,6 +17,7 @@ A simple api to query your Backbone Collections. Also available as underscore/lo
 * between()
 * query()
 
+All methods require 2 parameters. The first parameter contains a hash for comparison. The second (optional) parameter contains options for sorting.
 
 ## Examples
 
@@ -38,4 +39,14 @@ high = users.gt { highscore: 1000 }, { orderBy: 'highscore', order: 'desc' }
 ### between
 ```coffeescript
 kids = users.between age: [5, 12]
+```
+
+### match
+```coffeescript
+nameAlike = users.match name: /in/g
+```
+
+### byLength
+```coffeescript
+byLength = users.byLength name: 5
 ```

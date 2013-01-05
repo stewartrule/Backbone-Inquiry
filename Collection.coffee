@@ -1,5 +1,5 @@
 
-# Condition partials
+# Comparion helpers
 operators =
     eq: (l, r) ->
         l is r
@@ -34,6 +34,7 @@ operators =
         l >= vl && l <= vr
 
 
+# Sort collection on different criteria
 sort = (collection, conditions) ->
     unless conditions and conditions.orderBy
         return collection

@@ -1,4 +1,7 @@
-# README
+# Backbone-Inquiry
+
+A simple api to query your Backbone Collections. Also available as underscore/lodash mixins.
+
 
 ## Api
 
@@ -28,11 +31,11 @@ pros = users.within { difficulty: ['hard', 'impossible'] }, { orderBy: 'age', or
 ```
 
 ### gt
+```coffeescript
 high = users.gt { highscore: 1000 }, { orderBy: 'highscore', order: 'desc' }
-
+```
 
 ### between
+```coffeescript
 kids = users.between age: [5, 12]
-
-
 ```

@@ -1,0 +1,24 @@
+{
+  "name": "Backbone-Inquiry",
+  "version": "0.0.1",
+  "description": "Lightweight api to easily query your Backbone collections",
+  "main": "Collection.coffee",
+  "dependencies": {
+    "backbone": "~0.9.9",
+    "lodash": "~1.0.0-rc.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:stewartrule/Backbone-Inquiry.git"
+  },
+  "keywords": [
+    "backbone",
+    "lodash",
+    "underscore",
+    "query"
+  ],
+  "author": "Walter Steur",
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}

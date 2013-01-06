@@ -65,7 +65,16 @@ pros = users.within { difficulty: ['hard', 'impossible'] }, { orderBy: 'age', or
 Get all users that don't play hard and impossible modes
 
 ```coffeescript
-easy = users.outside { difficulty: ['hard', 'impossible'] }, { orderBy: 'highscore', order: 'desc', limit: 5 }
+easy = users.outside { difficulty: ['hard', 'impossible'] }, { orderBy: 'highscore', limit: 5 }
+```
+
+you can also use all methods with lodash or underscore
+
+```coffeescript
+# eq comes down to beeing the same as where
+male = users.eq male: yes
+
+easy = _.outside male, { difficulty: ['hard', 'impossible'] }, { orderBy: 'highscore', limit: 5 }
 ```
 
 ### match
@@ -87,7 +96,7 @@ fiveLetterNames = users.byLength name: 5
 
 ## Multi operator
 
-#### query
+### query
 Query is a combination filter of all the methods above.
 
 ##### syntax
@@ -104,7 +113,7 @@ collection.query {
 }
 ```
 
-### example
+#### example
 ```coffeescript
 noobish = users.query {
     eq:

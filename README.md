@@ -2,11 +2,11 @@
 
 A very lightweight (1.8 Kb minified) api to query your Backbone Collections. Also available as underscore/lodash mixins.
 
-
 All methods accept 2 parameters. The first parameter contains a hash for comparison. The second (optional) parameter contains options for sorting.
 
+### Api
 
-
+#### single operator
 * eq()
 * gt()
 * gte()
@@ -18,8 +18,12 @@ All methods accept 2 parameters. The first parameter contains a hash for compari
 * within()
 * between()
 * outside()
-* orderBy()
+
+#### multi operator
 * query()
+
+#### ordering
+* orderBy()
 
 
 ## Examples
@@ -42,7 +46,7 @@ highscore = users.gt { highscore: 1000 }, { orderBy: 'highscore', order: 'desc' 
 
 ### between
 
-get all users between the age of 5 and 12
+Get all users between the age of 5 and 12
 
 ```coffeescript
 kids = users.between age: [5, 12]
@@ -50,7 +54,7 @@ kids = users.between age: [5, 12]
 
 ### within
 
-get all users that play hard and impossible modes
+Get all users that play hard and impossible modes
 
 ```coffeescript
 pros = users.within { difficulty: ['hard', 'impossible'] }, { orderBy: 'age', order: 'asc', limit: 5 }
@@ -58,7 +62,7 @@ pros = users.within { difficulty: ['hard', 'impossible'] }, { orderBy: 'age', or
 
 ### outside
 
-get all users that don't play hard and impossible modes
+Get all users that don't play hard and impossible modes
 
 ```coffeescript
 easy = users.outside { difficulty: ['hard', 'impossible'] }, { orderBy: 'highscore', order: 'desc', limit: 5 }
@@ -66,7 +70,7 @@ easy = users.outside { difficulty: ['hard', 'impossible'] }, { orderBy: 'highsco
 
 ### match
 
-get all user user who's name name matches 'in'
+Get all user user who's name matches 'in'
 
 ```coffeescript
 nameAlike = users.match name: /in/g
@@ -74,7 +78,7 @@ nameAlike = users.match name: /in/g
 
 ### byLength
 
-get all users that have exactly 5 characters in their name
+Get all users that have exactly 5 characters in their name
 
 ```coffeescript
 fiveLetterNames = users.byLength name: 5
@@ -82,9 +86,12 @@ fiveLetterNames = users.byLength name: 5
 
 
 ## Multi operator
-query is a combination of all the methods above.
 
-#### syntax
+#### query
+Query is a combination filter of all the methods above.
+
+##### syntax
+
 ```coffeescript
 collection.query {
     operator1:
@@ -97,7 +104,7 @@ collection.query {
 }
 ```
 
-### query
+### example
 ```coffeescript
 noobish = users.query {
     eq:
@@ -114,12 +121,12 @@ noobish = users.query {
 ## Ordering
 All methods accept an optional parameter for sorting.
 
-current options are: 'orderBy', 'order' and 'limit'
+Current options are: 'orderBy', 'order' and 'limit'
 
 you can also call orderBy as a method. The first param is the propertyname. The second (optional) parameter can contain all of the options above.
 
 ### orderBy
 ```coffeescript
-alfa = users.orderBy 'name', { limit: 5 }
+alfa = users.orderBy 'name', { limit: 5, order: 'desc' }
 ```
 

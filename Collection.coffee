@@ -98,7 +98,6 @@ class Collection extends Backbone.Collection
         _.query @toJSON(), conditions, sortingOptions
 
     orderBy: (prop, options) ->
-        console.log '>', prop
         _.orderBy @toJSON(), prop, options
 
 

@@ -1,5 +1,7 @@
 
-# Comparion helpers
+
+# Comparison helpers
+# These will define the api
 operators =
     eq: (l, r) ->
         l is r
@@ -28,6 +30,9 @@ operators =
     within: (l, arr) ->
         l in arr
 
+    outside: (l, arr) ->
+        not (l in arr)
+
     between: (l, arr) ->
         vl = arr[0]
         vr = arr[1] or vl
@@ -35,10 +40,10 @@ operators =
 
 
 # Sort collection on different criteria
-sort = (collection, conditions) ->
-    unless conditions and conditions.orderBy
+sort = (collection, options) ->
+    unless options and options.orderBy
         return collection
-    {orderBy, order, limit} = conditions
+    {orderBy, order, limit} = options
     collection = _.sortBy collection, (model) ->
         model[orderBy]
     if order and order.toLowerCase() is 'desc'
@@ -54,21 +59,27 @@ mixin = {}
 # Use operator partials to generate query methods on _
 # with the same names as the operator method names
 _.each operators, (compare, method) ->
-    mixin[method] = (collection, conditions, sortingOptions) ->
+    mixin[method] = (collection, conditions, orderOptions) ->
         res = _.filter collection, (item) ->
             _.all conditions, (val, key) ->
                 compare item[key], val
-        sort res, sortingOptions
+        sort res, orderOptions
 
 
-# One single method to combine different type of conditions into one command
-mixin.query = (collection, options, sortingOptions) ->
+# The method to combine different type of conditions into one command
+mixin.query = (collection, options, orderOptions) ->
     res = _.filter collection, (model) ->
         _.all options, (conditions, method) ->
             compare = operators[method]
             _.all conditions, (val, key) ->
                 compare model[key], val
-    sort res, sortingOptions
+    sort res, orderOptions
+
+# Simple way to sort a collection based on a property value
+mixin.orderBy = (collection, prop, options) ->
+    criteria = { order: 'asc', orderBy: prop }
+    criteria = _.extend criteria, options
+    sort collection, criteria
 
 # Assign mixin to underscore or lodash
 _.mixin mixin
@@ -85,6 +96,11 @@ class Collection extends Backbone.Collection
     # Delegate to _.query
     query: (conditions, sortingOptions) ->
         _.query @toJSON(), conditions, sortingOptions
+
+    orderBy: (prop, options) ->
+        console.log '>', prop
+        _.orderBy @toJSON(), prop, options
+
 
 
 # Export

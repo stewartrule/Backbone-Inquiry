@@ -42,6 +42,10 @@ $ ->
     users = new Collection data
 
 
+    # orderBy
+    ordered = users.orderBy 'name', { limit: 5 }
+    addTable ordered, "users.orderBy 'name', { limit: 5 }'"
+
     # Regex matching
     nameAlike = users.match name: /in/g
     addTable nameAlike, "users.match name: /in/g"
@@ -55,6 +59,10 @@ $ ->
     # Pros
     pros = users.within { difficulty: ['hard', 'impossible'] }, { orderBy: 'age', order: 'asc', limit: 5 }
     addTable pros, "users.within { difficulty: ['hard', 'impossible'] }, { orderBy: 'age', order: 'asc', limit: 5 }"
+
+    # Easy gamers
+    easy = users.outside { difficulty: ['hard', 'impossible'] }, { orderBy: 'highscore', order: 'desc', limit: 5 }
+    addTable easy, "users.outside { difficulty: ['hard', 'impossible'] }, { orderBy: 'highscore', order: 'desc', limit: 5 }"
 
 
     # Scores higher then 1000

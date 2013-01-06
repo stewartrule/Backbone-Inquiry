@@ -33,6 +33,9 @@
     within: function(l, arr) {
       return __indexOf.call(arr, l) >= 0;
     },
+    outside: function(l, arr) {
+      return !(__indexOf.call(arr, l) >= 0);
+    },
     between: function(l, arr) {
       var vl, vr;
       vl = arr[0];
@@ -41,12 +44,12 @@
     }
   };
 
-  sort = function(collection, conditions) {
+  sort = function(collection, options) {
     var limit, order, orderBy;
-    if (!(conditions && conditions.orderBy)) {
+    if (!(options && options.orderBy)) {
       return collection;
     }
-    orderBy = conditions.orderBy, order = conditions.order, limit = conditions.limit;
+    orderBy = options.orderBy, order = options.order, limit = options.limit;
     collection = _.sortBy(collection, function(model) {
       return model[orderBy];
     });
@@ -62,18 +65,18 @@
   mixin = {};
 
   _.each(operators, function(compare, method) {
-    return mixin[method] = function(collection, conditions, sortingOptions) {
+    return mixin[method] = function(collection, conditions, orderOptions) {
       var res;
       res = _.filter(collection, function(item) {
         return _.all(conditions, function(val, key) {
           return compare(item[key], val);
         });
       });
-      return sort(res, sortingOptions);
+      return sort(res, orderOptions);
     };
   });
 
-  mixin.query = function(collection, options, sortingOptions) {
+  mixin.query = function(collection, options, orderOptions) {
     var res;
     res = _.filter(collection, function(model) {
       return _.all(options, function(conditions, method) {
@@ -84,7 +87,17 @@
         });
       });
     });
-    return sort(res, sortingOptions);
+    return sort(res, orderOptions);
+  };
+
+  mixin.orderBy = function(collection, prop, options) {
+    var criteria;
+    criteria = {
+      order: 'asc',
+      orderBy: prop
+    };
+    criteria = _.extend(criteria, options);
+    return sort(collection, criteria);
   };
 
   _.mixin(mixin);
@@ -106,6 +119,11 @@
 
     Collection.prototype.query = function(conditions, sortingOptions) {
       return _.query(this.toJSON(), conditions, sortingOptions);
+    };
+
+    Collection.prototype.orderBy = function(prop, options) {
+      console.log('>', prop);
+      return _.orderBy(this.toJSON(), prop, options);
     };
 
     return Collection;

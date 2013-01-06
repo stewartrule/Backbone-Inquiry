@@ -292,7 +292,7 @@
   };
 
   $(function() {
-    var $target, addTable, byLength, high, kids, makeRow, mixed, nameAlike, noobish, pros, users;
+    var $target, addTable, byLength, easy, high, kids, makeRow, mixed, nameAlike, noobish, ordered, pros, users;
     $target = $('#demo');
     makeRow = function(data, tag) {
       var $row;
@@ -326,6 +326,10 @@
       return row;
     });
     users = new Collection(data);
+    ordered = users.orderBy('name', {
+      limit: 5
+    });
+    addTable(ordered, "users.orderBy 'name', { limit: 5 }'");
     nameAlike = users.match({
       name: /in/g
     });
@@ -342,6 +346,14 @@
       limit: 5
     });
     addTable(pros, "users.within { difficulty: ['hard', 'impossible'] }, { orderBy: 'age', order: 'asc', limit: 5 }");
+    easy = users.outside({
+      difficulty: ['hard', 'impossible']
+    }, {
+      orderBy: 'highscore',
+      order: 'desc',
+      limit: 5
+    });
+    addTable(easy, "users.outside { difficulty: ['hard', 'impossible'] }, { orderBy: 'highscore', order: 'desc', limit: 5 }");
     high = users.gt({
       highscore: 1000
     }, {

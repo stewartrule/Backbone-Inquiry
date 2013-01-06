@@ -5,7 +5,7 @@ A very lightweight (1.8 Kb minified) api to query your Backbone Collections. Als
 
 All methods accept 2 parameters. The first parameter contains a hash for comparison. The second (optional) parameter contains options for sorting.
 
-### Api
+
 
 * eq()
 * gt()
@@ -114,3 +114,4 @@ noobish = users.query {
 ```coffeescript
 alfa = users.orderBy 'name', { limit: 5 }
 ```
+

@@ -2,7 +2,7 @@
 
 A very lightweight (1.8 Kb minified) api to query your Backbone Collections. Also available as underscore/lodash mixins.
 
-All methods accept 2 parameters. The first parameter contains a hash for comparison. The second (optional) parameter contains options for sorting.
+All query methods accept 2 parameters. The first parameter contains a hash for comparison. The second (optional) parameter contains options for sorting.
 
 ### Api
 
@@ -113,15 +113,16 @@ collection.query {
 }
 ```
 
-#### example
+#### examples
 ```coffeescript
-noobish = users.query {
-    eq:
-        difficulty: 'noob'
-    lt:
-        highscore: 500
+
+fastGrannies = users.query { gt: { age: 70 }, eq: { male: no }, lt: { duration: 100 } }
+
+noobs = users.query {
+    eq: { difficulty: 'noob' },
+    lt: { highscore: 600 }
 }, {
-    orderBy: 'name'
+    orderBy: 'name',
     order: 'desc'
 }
 ```

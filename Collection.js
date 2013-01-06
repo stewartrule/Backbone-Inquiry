@@ -122,7 +122,6 @@
     };
 
     Collection.prototype.orderBy = function(prop, options) {
-      console.log('>', prop);
       return _.orderBy(this.toJSON(), prop, options);
     };
 

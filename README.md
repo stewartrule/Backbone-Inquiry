@@ -29,7 +29,7 @@ All methods accept 2 parameters. The first parameter contains a hash for compari
 users = new Collection data
 ```
 
-## Single operator methods
+## Single operator
 
 ### gt
 
@@ -61,7 +61,7 @@ pros = users.within { difficulty: ['hard', 'impossible'] }, { orderBy: 'age', or
 get all users that don't play hard and impossible modes
 
 ```coffeescript
-easygamers = users.outside { difficulty: ['hard', 'impossible'] }, { orderBy: 'highscore', order: 'desc', limit: 5 }
+easy = users.outside { difficulty: ['hard', 'impossible'] }, { orderBy: 'highscore', order: 'desc', limit: 5 }
 ```
 
 ### match
@@ -81,8 +81,8 @@ fiveLetterNames = users.byLength name: 5
 ```
 
 
-## query
-Query is a combination of all the methods above.
+## Multi operator
+query is a combination of all the methods above.
 
 #### syntax
 ```coffeescript
@@ -109,6 +109,14 @@ noobish = users.query {
     order: 'desc'
 }
 ```
+
+
+## Ordering
+All methods accept an optional parameter for sorting.
+
+current options are: 'orderBy', 'order' and 'limit'
+
+you can also call orderBy as a method. The first param is the propertyname. The second (optional) parameter can contain all of the options above.
 
 ### orderBy
 ```coffeescript

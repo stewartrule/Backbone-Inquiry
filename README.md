@@ -1,6 +1,6 @@
 # Backbone-Inquiry
 
-A very lightweight (1.8 Kb minified, 769 bytes gzipped) utility to query your Backbone Collections. Also available as underscore/lodash mixins.
+A very lightweight (1.8 Kb minified, 769 bytes gzipped) utility to query your Backbone Collections. Also available as lodash/underscore.js mixins.
 
 All query methods accept 2 parameters. The first parameter contains a hash for comparison. The second (optional) parameter contains options for sorting.
 
@@ -42,7 +42,7 @@ users = new Users foo
 
 ### gt
 
-get all users with a highscore greater then 1000.
+Get all users with a highscore greater then 1000.
 
 ```coffeescript
 highscore = users.gt { highscore: 1000 }, { orderBy: 'highscore', order: 'desc' }
@@ -143,5 +143,6 @@ You can also call orderBy as a method. The first param is the propertyname. The 
 ### orderBy
 ```coffeescript
 alfa = users.orderBy 'name', { limit: 5, order: 'desc' }
+
 ```
 

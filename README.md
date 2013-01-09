@@ -145,9 +145,9 @@ You can also call orderBy as a method. The first param is the propertyname. The 
 ### orderBy
 ```coffeescript
 alfa = users.orderBy 'name', { limit: 5, order: 'desc' }
-
+```
 
 ## Demo
-First run npm install so Backbone and Lo-Dash are in place.
-```
+First run `npm install` so Backbone and Lo-Dash are in place.
+
 

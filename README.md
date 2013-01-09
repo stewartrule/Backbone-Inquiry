@@ -86,7 +86,7 @@ easy = _.outside male, { difficulty: ['hard', 'impossible'] }, { orderBy: 'highs
 
 ### match
 
-Get all users who's names matches 'in'.
+Get all users whose names matches 'in'
 
 ```coffeescript
 nameAlike = users.match name: /in/g

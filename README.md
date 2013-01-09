@@ -1,6 +1,8 @@
 # Backbone-Inquiry
 
-A very lightweight (1.8 Kb minified, 769 bytes gzipped) utility to query your Backbone Collections. Also available as lodash/underscore.js mixins.
+A very lightweight (1.8 Kb minified, 769 bytes gzipped) utility to query your Backbone Collections.
+
+All new methods are also available as mixins to Lo-Dash or underscore.js.
 
 All query methods accept 2 parameters. The first parameter contains a hash for comparison. The second (optional) parameter contains options for sorting.
 
@@ -30,7 +32,7 @@ All query methods accept 2 parameters. The first parameter contains a hash for c
 
 
 ```coffeescript
-# extend from Collection instead of Backbone.Collectiom
+# Extend from Collection instead of Backbone.Collectiom
 class Users extends Collection
     model: User
     # etc..
@@ -144,5 +146,8 @@ You can also call orderBy as a method. The first param is the propertyname. The 
 ```coffeescript
 alfa = users.orderBy 'name', { limit: 5, order: 'desc' }
 
+
+## Demo
+First run npm install so Backbone and Lo-Dash are in place.
 ```
 

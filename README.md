@@ -54,7 +54,7 @@ kids = users.between age: [5, 12]
 
 ### within
 
-Get all users that play hard and impossible modes
+Get all users who play hard and impossible modes
 
 ```coffeescript
 pros = users.within { difficulty: ['hard', 'impossible'] }, { orderBy: 'age', order: 'asc', limit: 5 }
@@ -62,16 +62,16 @@ pros = users.within { difficulty: ['hard', 'impossible'] }, { orderBy: 'age', or
 
 ### outside
 
-Get all users that don't play hard and impossible modes
+Get all users who don't play hard and impossible modes
 
 ```coffeescript
 easy = users.outside { difficulty: ['hard', 'impossible'] }, { orderBy: 'highscore', limit: 5 }
 ```
 
-you can also use all methods with lodash or underscore
+You can also use all methods with lodash or underscore
 
 ```coffeescript
-# eq comes down to beeing the same as where
+# eq is basically the same as where
 male = users.eq male: yes
 
 easy = _.outside male, { difficulty: ['hard', 'impossible'] }, { orderBy: 'highscore', limit: 5 }
@@ -79,7 +79,7 @@ easy = _.outside male, { difficulty: ['hard', 'impossible'] }, { orderBy: 'highs
 
 ### match
 
-Get all user user who's name matches 'in'
+Get all users who's names matches 'in'
 
 ```coffeescript
 nameAlike = users.match name: /in/g
@@ -87,7 +87,7 @@ nameAlike = users.match name: /in/g
 
 ### byLength
 
-Get all users that have exactly 5 characters in their name
+Get all users who have exactly 5 characters in their name
 
 ```coffeescript
 fiveLetterNames = users.byLength name: 5
@@ -133,7 +133,7 @@ All methods accept an optional parameter for sorting.
 
 Current options are: 'orderBy', 'order' and 'limit'
 
-you can also call orderBy as a method. The first param is the propertyname. The second (optional) parameter can contain all of the options above.
+You can also call orderBy as a method. The first param is the propertyname. The second (optional) parameter can contain all of the options above.
 
 ### orderBy
 ```coffeescript

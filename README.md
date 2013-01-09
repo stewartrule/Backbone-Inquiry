@@ -30,14 +30,19 @@ All query methods accept 2 parameters. The first parameter contains a hash for c
 
 
 ```coffeescript
-users = new Collection data
+# extend from Collection instead of Backbone.Collectiom
+class Users extends Collection
+    model: User
+    # etc..
+
+users = new Users foo
 ```
 
 ## Single operator
 
 ### gt
 
-get all users with a highscore greater then 1000
+get all users with a highscore greater then 1000.
 
 ```coffeescript
 highscore = users.gt { highscore: 1000 }, { orderBy: 'highscore', order: 'desc' }
@@ -46,7 +51,7 @@ highscore = users.gt { highscore: 1000 }, { orderBy: 'highscore', order: 'desc' 
 
 ### between
 
-Get all users between the age of 5 and 12
+Get all users between the age of 5 and 12.
 
 ```coffeescript
 kids = users.between age: [5, 12]
@@ -54,7 +59,7 @@ kids = users.between age: [5, 12]
 
 ### within
 
-Get all users who play hard and impossible modes
+Get all users who play hard and impossible modes.
 
 ```coffeescript
 pros = users.within { difficulty: ['hard', 'impossible'] }, { orderBy: 'age', order: 'asc', limit: 5 }
@@ -62,13 +67,13 @@ pros = users.within { difficulty: ['hard', 'impossible'] }, { orderBy: 'age', or
 
 ### outside
 
-Get all users who don't play hard and impossible modes
+Get all users who don't play hard and impossible modes.
 
 ```coffeescript
 easy = users.outside { difficulty: ['hard', 'impossible'] }, { orderBy: 'highscore', limit: 5 }
 ```
 
-You can also use all methods with lodash or underscore
+You can also use all methods with lodash or underscore.js
 
 ```coffeescript
 # eq is basically the same as where
@@ -79,7 +84,7 @@ easy = _.outside male, { difficulty: ['hard', 'impossible'] }, { orderBy: 'highs
 
 ### match
 
-Get all users who's names matches 'in'
+Get all users who's names matches 'in'.
 
 ```coffeescript
 nameAlike = users.match name: /in/g
@@ -99,7 +104,7 @@ fiveLetterNames = users.byLength name: 5
 ### query
 Query is a combination filter of all the methods above.
 
-##### syntax
+#### syntax
 
 ```coffeescript
 collection.query {

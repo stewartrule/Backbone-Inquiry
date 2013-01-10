@@ -1,6 +1,8 @@
 # Backbone-Inquiry
 
-A very lightweight (1.8 Kb minified, 769 bytes gzipped) api to query your Backbone Collections. Also available as underscore/lodash mixins.
+A very lightweight (1.8 Kb minified, 769 bytes gzipped) utility to query your Backbone Collections.
+
+All new methods are also available as mixins to Lo-Dash or underscore.js.
 
 All query methods accept 2 parameters. The first parameter contains a hash for comparison. The second (optional) parameter contains options for sorting.
 
@@ -30,14 +32,19 @@ All query methods accept 2 parameters. The first parameter contains a hash for c
 
 
 ```coffeescript
-users = new Collection data
+# Extend from Collection instead of Backbone.Collectiom
+class Users extends Collection
+    model: User
+    # etc..
+
+users = new Users foo
 ```
 
 ## Single operator
 
 ### gt
 
-get all users with a highscore greater then 1000
+Get all users with a highscore greater then 1000.
 
 ```coffeescript
 highscore = users.gt { highscore: 1000 }, { orderBy: 'highscore', order: 'desc' }
@@ -46,7 +53,7 @@ highscore = users.gt { highscore: 1000 }, { orderBy: 'highscore', order: 'desc' 
 
 ### between
 
-Get all users between the age of 5 and 12
+Get all users between the age of 5 and 12.
 
 ```coffeescript
 kids = users.between age: [5, 12]
@@ -54,7 +61,7 @@ kids = users.between age: [5, 12]
 
 ### within
 
-Get all users that play hard and impossible modes
+Get all users who play hard and impossible modes.
 
 ```coffeescript
 pros = users.within { difficulty: ['hard', 'impossible'] }, { orderBy: 'age', order: 'asc', limit: 5 }
@@ -62,16 +69,16 @@ pros = users.within { difficulty: ['hard', 'impossible'] }, { orderBy: 'age', or
 
 ### outside
 
-Get all users that don't play hard and impossible modes
+Get all users who don't play hard and impossible modes.
 
 ```coffeescript
 easy = users.outside { difficulty: ['hard', 'impossible'] }, { orderBy: 'highscore', limit: 5 }
 ```
 
-you can also use all methods with lodash or underscore
+You can also use all methods with lodash or underscore.js
 
 ```coffeescript
-# eq comes down to beeing the same as where
+# eq is basically the same as where
 male = users.eq male: yes
 
 easy = _.outside male, { difficulty: ['hard', 'impossible'] }, { orderBy: 'highscore', limit: 5 }
@@ -79,7 +86,7 @@ easy = _.outside male, { difficulty: ['hard', 'impossible'] }, { orderBy: 'highs
 
 ### match
 
-Get all user user who's name matches 'in'
+Get all users whose names matches 'in'
 
 ```coffeescript
 nameAlike = users.match name: /in/g
@@ -87,7 +94,7 @@ nameAlike = users.match name: /in/g
 
 ### byLength
 
-Get all users that have exactly 5 characters in their name
+Get all users who have exactly 5 characters in their name
 
 ```coffeescript
 fiveLetterNames = users.byLength name: 5
@@ -99,7 +106,7 @@ fiveLetterNames = users.byLength name: 5
 ### query
 Query is a combination filter of all the methods above.
 
-##### syntax
+#### syntax
 
 ```coffeescript
 collection.query {
@@ -135,8 +142,13 @@ Current options are: 'orderBy', 'order' and 'limit'
 
 you can also call orderBy as a method. The first param is the attribute name. The second (optional) parameter can contain all of the options above.
 
+
 ### orderBy
 ```coffeescript
 alfa = users.orderBy 'name', { limit: 5, order: 'desc' }
 ```
+
+## Demo
+First run `npm install` so Backbone and Lo-Dash are in place.
+
 

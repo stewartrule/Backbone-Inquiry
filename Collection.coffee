@@ -90,6 +90,10 @@ _.mixin mixin
 # Add methods to Backbone.Collection
 class Collection extends Backbone.Collection
 
+    # Use call instead of apply
+    constructor: (models, options) ->
+        super models, options
+
     # Copy comparison query mixins to the prototype
     _.each operators, (compare, method) =>
         @prototype[method] = (conditions, sortingOptions) ->

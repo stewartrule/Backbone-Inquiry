@@ -142,7 +142,8 @@ All methods accept an optional parameter for sorting.
 
 Current options are: 'orderBy', 'order' and 'limit'
 
-You can also call orderBy as a method. The first parameter is the propertyname. The second (optional) parameter can contain all of the options above.
+you can also call orderBy as a method. The first param is the attribute name. The second (optional) parameter can contain all of the options above.
+
 
 ### orderBy
 ```coffeescript

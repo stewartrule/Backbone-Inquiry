@@ -89,7 +89,7 @@ easy = _.outside male, { difficulty: ['hard', 'impossible'] }, { orderBy: 'highs
 Get all users who have at least 2 L's in their name
 
 ```coffeescript
-nameAlike = users.match name: /l{2,}/g
+matched = users.match name: /l{2,}/g
 ```
 
 

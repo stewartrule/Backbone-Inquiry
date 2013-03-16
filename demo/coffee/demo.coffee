@@ -47,14 +47,12 @@ $ ->
     addTable ordered, "users.orderBy 'name', { limit: 5 }'"
 
     # Regex matching
-    nameAlike = users.match name: /in/g
-    addTable nameAlike, "users.match name: /in/g"
+    matched = users.match name: /l{2,}/g
+    addTable matched, "users.match name: /l{2,}/g"
 
-
-    # Search by string length
-    byLength = users.byLength name: 5
-    addTable byLength, "users.byLength name: 5"
-
+    # Case insensitive search
+    nameAlike = users.like name: 'in'
+    addTable nameAlike, "users.like name: 'in'"
 
     # Pros
     pros = users.within { difficulty: ['hard', 'impossible'] }, { orderBy: 'age', order: 'asc', limit: 5 }
@@ -64,21 +62,17 @@ $ ->
     easy = users.outside { difficulty: ['hard', 'impossible'] }, { orderBy: 'highscore', order: 'desc', limit: 5 }
     addTable easy, "users.outside { difficulty: ['hard', 'impossible'] }, { orderBy: 'highscore', order: 'desc', limit: 5 }"
 
-
     # Scores higher then 1000
     high = users.gt { highscore: 1000 }, { orderBy: 'highscore', order: 'desc' }
     addTable high, "high = users.gt highscore: 1000"
-
 
     # All kids between the age of 5 and 12
     kids = users.between age: [5, 12]
     addTable kids, "users.between age: [5, 12]"
 
-
     # Query with multiple comparisons
     noobish = users.query { eq: { difficulty: 'noob' }, lt: { highscore: 600 } }, { orderBy: 'name', order: 'desc' }
     addTable noobish, "users.query { eq: { difficulty: 'noob' }, lt: { highscore: 600 } }, { orderBy: 'name', order: 'desc' }"
-
 
     # And another one with multiple comparisons
     mixed = users.query {

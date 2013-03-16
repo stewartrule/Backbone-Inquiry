@@ -16,7 +16,7 @@ All query methods accept 2 parameters. The first parameter contains a hash for c
 * lte()
 * not()
 * match()
-* byLength()
+* like()
 * within()
 * between()
 * outside()
@@ -86,19 +86,21 @@ easy = _.outside male, { difficulty: ['hard', 'impossible'] }, { orderBy: 'highs
 
 ### match
 
-Get all users whose names matches 'in'
+Get all users who have at least 2 L's in their name
 
 ```coffeescript
-nameAlike = users.match name: /in/g
+nameAlike = users.match name: /l{2,}/g
 ```
 
-### byLength
 
-Get all users who have exactly 5 characters in their name
+### like
+
+Get all users whose names contain 'in' (case insensitive)
 
 ```coffeescript
-fiveLetterNames = users.byLength name: 5
+nameAlike = users.like name: 'in'
 ```
+
 
 
 ## Multi operator

@@ -27,8 +27,10 @@
     match: function(l, r) {
       return r.test(l);
     },
-    byLength: function(l, r) {
-      return l.length === r;
+    like: function(l, r) {
+      l = l.toLowerCase();
+      r = r.toLowerCase();
+      return l.indexOf(r) > -1;
     },
     within: function(l, arr) {
       return __indexOf.call(arr, l) >= 0;

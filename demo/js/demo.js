@@ -292,7 +292,7 @@
   };
 
   $(function() {
-    var $target, addTable, byLength, easy, high, kids, makeRow, mixed, nameAlike, noobish, ordered, pros, users;
+    var $target, addTable, easy, high, kids, makeRow, matched, mixed, nameAlike, noobish, ordered, pros, users;
     $target = $('#demo');
     makeRow = function(data, tag) {
       var $row;
@@ -330,14 +330,14 @@
       limit: 5
     });
     addTable(ordered, "users.orderBy 'name', { limit: 5 }'");
-    nameAlike = users.match({
-      name: /in/g
+    matched = users.match({
+      name: /l{2,}/g
     });
-    addTable(nameAlike, "users.match name: /in/g");
-    byLength = users.byLength({
-      name: 5
+    addTable(matched, "users.match name: /l{2,}/g");
+    nameAlike = users.like({
+      name: 'in'
     });
-    addTable(byLength, "users.byLength name: 5");
+    addTable(nameAlike, "users.like name: 'in'");
     pros = users.within({
       difficulty: ['hard', 'impossible']
     }, {

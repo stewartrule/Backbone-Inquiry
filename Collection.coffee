@@ -24,8 +24,10 @@ operators =
     match: (l, r) ->
         r.test l
 
-    byLength: (l, r) ->
-        l.length is r
+    like: (l, r) ->
+        l = l.toLowerCase()
+        r = r.toLowerCase()
+        l.indexOf(r) > -1
 
     within: (l, arr) ->
         l in arr

@@ -25,9 +25,11 @@ operators =
         r.test l
 
     like: (l, r) ->
-        l = l.toLowerCase()
-        r = r.toLowerCase()
-        l.indexOf(r) > -1
+        if l and r
+            l = l.toLowerCase()
+            r = r.toLowerCase()
+            l.indexOf(r) > -1
+        return false
 
     within: (l, arr) ->
         l in arr

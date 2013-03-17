@@ -31,7 +31,7 @@
       if (l && r) {
         l = l.toLowerCase();
         r = r.toLowerCase();
-        l.indexOf(r) > -1;
+        return l.indexOf(r) > -1;
       }
       return false;
     },

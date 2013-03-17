@@ -18,7 +18,7 @@ operators =
     lte: (l, r) ->
         l <= r
 
-    not: (l, r) ->
+    neq: (l, r) ->
         l isnt r
 
     match: (l, r) ->

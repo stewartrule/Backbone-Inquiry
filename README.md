@@ -14,7 +14,7 @@ All query methods accept 2 parameters. The first parameter contains a hash for c
 * gte()
 * lt()
 * lte()
-* not()
+* neq()
 * match()
 * like()
 * within()

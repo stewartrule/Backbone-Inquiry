@@ -21,7 +21,7 @@
     lte: function(l, r) {
       return l <= r;
     },
-    not: function(l, r) {
+    neq: function(l, r) {
       return l !== r;
     },
     match: function(l, r) {
